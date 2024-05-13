@@ -1,0 +1,147 @@
+
+      /* Additional CSS for card height consistency */
+      .card {
+        height: 100%;
+      }
+      /* Align button to the bottom */
+      .card-body {
+        display: flex;
+        flex-direction: column;
+      }
+      .card-text {
+        flex-grow: 1;
+      }
+      /* Style for phone numbers */
+      .phone-number {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .phone-number-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+        border: 1px solid #ccc;
+        padding: 5px;
+      }
+      .phone-number-item i {
+        margin-right: 5px;
+      }
+      /* Style for individual phone number fields */
+      .phone-number-item .phone-number-label {
+        font-weight: bold;
+      }
+      .phone-number-item .phone-number-value {
+        font-style: italic;
+        color: #555;
+      }
+      /* Footer styles */
+      .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #343a40;
+        color: #fff;
+        padding: 20px 0;
+      }
+      /* Style for appointment buttons */
+      .appointment-day {
+        margin-bottom: 10px; /* Add bottom margin */
+      }
+
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Контент модального окна */
+.modal-content {
+  margin-left: 20em;
+  margin-top: 20em;
+  background-color: #fefefe;
+  padding: 40px;
+  border: 8px solid #007bff; /* Большой бордер */
+  border-radius: 30px;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+/* Кнопка закрытия */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+body {
+  background-color: #f8f9fa;
+  margin-bottom: 70px; /* Adjust margin to accommodate footer */
+}
+
+.registration-form {
+  max-width: 900px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: #fff;
+  padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .registration-form {
+    padding: 20px;
+  }
+}
+
+
+      

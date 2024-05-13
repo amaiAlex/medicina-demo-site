@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карточки врачей</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <!-- HEADER -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="public/LogoMedical.jpg" width="80" height="80" class="d-inline-block align-top" alt="">
+      Наши врачи
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Главная <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Контакты
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="phone-number">
+                <li class="phone-number-item">
+                  <i class="fas fa-phone-alt mr-2"></i>
+                  <span class="phone-number-label">Телефон:</span>
+                  <span class="phone-number-value">+3804564564</span>
+                </li>
+                <li class="phone-number-item">
+                  <i class="fas fa-phone-alt mr-2"></i>
+                  <span class="phone-number-label">Телефон:</span>
+                  <span class="phone-number-value">+3804534535</span>
+                </li>
+                <li class="phone-number-item">
+                  <i class="fas fa-phone-alt mr-2"></i>
+                  <span class="phone-number-label">Телефон:</span>
+                  <span class="phone-number-value">+3804564566</span>
+                </li>
+              </ul>
+            </div>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- CARDS -->
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-4" id="doctors-container">
+    <!-- Doctor cards will be dynamically added here -->
+  </div>
+</div>
+
+<footer class="footer text-center">
+  <div class="container">
+    <span>&copy; 2024 Медицинский Центр</span>
+  </div>
+</footer>
+
+<!-- Bootstrap JS, jQuery, Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="CardComponent.js"></script>
+
+
+</body>
+</html>

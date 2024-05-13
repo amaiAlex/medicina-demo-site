@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="modal" id="successModal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="successMessage"></p>
+        <button id="okButton" class="btn btn-primary">ОК</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="registration-form">
+        <h2 class="text-center mb-4">Впервые у нас?</h2>
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="lastName">Фамилия</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Введите фамилию">
+        </div>
+        <div class="form-group">
+            <label for="firstName">Имя</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите имя">
+        </div>
+        <div class="form-group">
+            <label for="middleName">Отчество</label>
+            <input type="text" class="form-control" id="middleName" name="middleName" placeholder="Введите отчество">
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Номер телефона</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Введите номер телефона">
+        </div>
+          <button type="submit" class="btn btn-primary">Записаться</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="registration-form">
+        <h2 class="text-center mb-4">Запись по полису</h2>
+        <form id="policyForm" action="/check-policy" method="post"> <!-- Обновление action -->
+          <div class="form-group">
+            <label for="policyNumber">Номер полиса</label>
+            <input type="text" class="form-control" id="policyNumber" name="policyNumber" placeholder="Введите номер полиса">
+          </div>
+          <button type="submit" class="btn btn-primary">Записаться по полису</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer text-center">
+  <div class="container">
+    <span>&copy; 2024 Медицинский Центр</span>
+  </div>
+</footer>
+
+<script>
+  // JavaScript код
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const requestData = {};
+
+        for (let [key, value] of formData.entries()) {
+            requestData[key] = value;
+        }
+
+        // Отправляем данные на сервер
+        fetch('http://localhost:3000/patients', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => response.json())
+        .then(data => {
+    console.log('Пациент добавлен:', data);
+    const message = `${requestData.lastName} ${requestData.firstName} ${requestData.middleName} успешно записаны в нашей клинике. Спасибо что выбрали именно нас!`;
+    successMessage.textContent = message;
+    successModal.style.display = 'block';
+    okButton.style.display = 'block'; 
+})
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form[action="/check-policy"]');
+    const successModal = document.getElementById('successModal');
+    const successMessage = document.getElementById('successMessage');
+    const closeModal = document.querySelector('.close');
+    const okButton = document.getElementById('okButton');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const requestData = {};
+
+        for (let [key, value] of formData.entries()) {
+            requestData[key] = value;
+        }
+
+        fetch('http://localhost:3000/check-policy', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                const patient = data.patient;
+                const message = `${patient.lastName} ${patient.firstName} ${patient.middleName} Вы успешно записаны!`;
+                successMessage.textContent = message;
+                successModal.style.display = 'block';
+                okButton.style.display = 'block'; // Показываем кнопку "ОК"
+            } else {
+                successMessage.textContent = "Номер полиса не найден";
+                successModal.style.display = 'block';
+                okButton.style.display = 'none'; // Скрываем кнопку "ОК"
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка при проверке полиса:', error);
+        });
+    });
+
+    closeModal.addEventListener('click', function() {
+        successModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target == successModal) {
+            successModal.style.display = 'none';
+        }
+    });
+
+    okButton.addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
+});
+
+</script>
+
+
+</body>
+</html>

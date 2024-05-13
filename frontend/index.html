@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Медицинский Центр "ZanoZa"</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+  <!-- Custom styles -->
+  
+  <style>
+    body {
+      background-image: url("public/back2.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh; 
+      margin: 0; 
+      padding: 0;
+      position: relative; 
+    }
+
+    .dropdown-menu .list-unstyled li {
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
+  }
+
+  .dropdown-menu .list-unstyled li:hover {
+    background-color: rgba(0, 0, 0, 0.1); 
+  }
+
+  .dropdown-menu .list-unstyled li i {
+    margin-right: 10px;
+  }
+  .dropdown-header {
+  display: block;
+  margin-bottom: 0;
+  font-size: .875rem;
+  color: #6c757d;
+  white-space: nowrap;
+}
+
+
+    .footer {
+      position: absolute; 
+      bottom: 0; 
+      width: 100%; 
+      background-color: rgba(255, 255, 255, 0.5); 
+    }
+
+    .hero-section h1 {
+      font-size: 3em; 
+    }
+
+    .hero-section p {
+      font-size: 1.5em; 
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <img src="public/LogoMedical.jpg" alt="Медицинский центр" width="140" height="100">
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <button
+    id="say-hi"
+    onclick="sayHiFromBackend()"
+    >
+    say hi
+  </button> -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Главная</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Услуги
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownServices">
+                <div class="dropdown-item d-inline">
+                    <h6 class="dropdown-header">Стоматология</h6>
+                    <p class="mb-1">Мы предлагаем широкий спектр стоматологических услуг, включая чистку зубов, лечение кариеса, протезирование и многое другое.</p>
+                </div>
+                <div class="dropdown-divider d-inline"></div> <!-- Разделитель -->
+                <div class="dropdown-item d-inline">
+                    <h6 class="dropdown-header">Офтальмология</h6>
+                    <p class="mb-1">Наша клиника также специализируется на офтальмологических услугах, таких как осмотр глаза, коррекция зрения, лечение глазных заболеваний и многое другое.</p>
+                </div>
+            </div>
+        </li>
+        
+          
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Контакты
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="list-unstyled">
+                <li><i class="fas fa-phone-alt mr-2"></i>+3804564564</li>
+                <li><i class="fas fa-phone-alt mr-2"></i>+3804534535</li>
+                <li><i class="fas fa-phone-alt mr-2"></i>+3804564566</li>
+              </ul>
+            </div>
+          </li>
+          
+          
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="">
+    <div class="row">
+      <div class="col-md-6" style="margin-left: 1em !important;">
+        <h1>Добро пожаловать в наш </h1>
+        <h1 style="font-weight: bold;">Медицинский Центр!</h1>
+        <p style="font-weight: bold;">Мы предоставляем качественные медицинские услуги для заботы о Вашем здоровье</p>
+        <a href="#" id="appointmentBtn" class="btn btn-primary">Записаться на прием</a>
+        <script>
+          document.getElementById("appointmentBtn").addEventListener("click", function() {
+            window.location.href = "doctorsPage.html";
+          });
+        </script>
+      </div>
+      
+      <div class="col-md-6">
+        <!-- Add any images or additional content here -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer mt-auto py-3">
+  <div class="container text-center">
+    <span class="text-muted">© 2024 Медицинский Центр</span>
+  </div>
+</footer>
+
+<!-- Bootstrap JS, jQuery, Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
