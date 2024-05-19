@@ -97,16 +97,18 @@ const doctorsTable = [
   },
 ];
 
-const genererateAppointmentsTable = (doctors) => {
+const genererateAppointmentsTable = (doctors, countDays = 21) => {
   // assuming the doctors is an array of objects containing doctor_id and doctor_name and days, which is an array of strings identifying the days of the week on which this doctor works
   // need to generate appointments for each doctor for each day of the week starting from 8:00 to 18:00 with 1 hour intervals
   // the appointments should be available by default and start from today and go for the next 21 days
 
   const appointments = [];
-  const days = doctors.reduce((acc, doctor) => acc.concat(doctor.days), []);
+  let days = doctors.reduce((acc, doctor) => acc.concat(doctor.days), []);
+  // ensure that the days are unique
+  days = [...new Set(days)];
   const today = new Date();
-  const next21Days = new Date(today);
-  next21Days.setDate(today.getDate() + 21);
+  const nextDays = new Date(today);
+  nextDays.setDate(today.getDate() + countDays);
 
   for (let doctor of doctors) {
     for (let day of days) {

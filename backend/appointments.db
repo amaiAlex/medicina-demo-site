@@ -38,7 +38,7 @@
 {"doctor_id":3,"time":"11:00","day":"2024-05-20","available":true,"id":433436,"_id":"3Qly5qFR1bOLFRxS"}
 {"doctor_id":3,"time":"10:00","day":"2024-05-19","available":true,"id":339958,"_id":"3TniXIp6G8eInWD9"}
 {"doctor_id":2,"time":"17:00","day":"2024-05-23","available":true,"id":344009,"_id":"3UW8LceWcw2ORdVk"}
-{"doctor_id":3,"time":"8:00","day":"2024-05-24","available":true,"id":935188,"_id":"3Vv9EAl3P4FwjSPy"}
+{"doctor_id":3,"time":"8:00","day":"2024-05-24","available":false,"id":935188,"_id":"3Vv9EAl3P4FwjSPy"}
 {"doctor_id":2,"time":"10:00","day":"2024-05-24","available":true,"id":215428,"_id":"3YHeXyWncC9277aY"}
 {"doctor_id":2,"time":"17:00","day":"2024-05-19","available":true,"id":735087,"_id":"3drWFpkYtz9NNB9V"}
 {"doctor_id":1,"time":"13:00","day":"2024-05-20","available":true,"id":126846,"_id":"3n6fZnA0LmHyR8TG"}
@@ -321,7 +321,7 @@
 {"doctor_id":4,"time":"12:00","day":"2024-05-21","available":true,"id":108410,"_id":"TnF05d2WEEq80F11"}
 {"doctor_id":2,"time":"12:00","day":"2024-05-19","available":true,"id":314196,"_id":"ToER6FkATVEburoT"}
 {"doctor_id":3,"time":"16:00","day":"2024-05-21","available":true,"id":22741,"_id":"TwmgiGFrjRuKAbMm"}
-{"doctor_id":3,"time":"8:00","day":"2024-05-24","available":true,"id":342565,"_id":"U3mHw1SOG2EmyQXa"}
+{"doctor_id":3,"time":"8:00","day":"2024-05-24","available":false,"id":342565,"_id":"U3mHw1SOG2EmyQXa"}
 {"doctor_id":1,"time":"9:00","day":"2024-05-23","available":true,"id":531658,"_id":"UE0pKjp6pjk8EyDc"}
 {"doctor_id":1,"time":"10:00","day":"2024-05-19","available":true,"id":552969,"_id":"UJ9CW7XJbhlI99cK"}
 {"doctor_id":2,"time":"12:00","day":"2024-05-19","available":true,"id":106535,"_id":"Ug62UP9EUFsIHvlI"}
@@ -385,6 +385,7 @@
 {"doctor_id":2,"time":"11:00","day":"2024-05-20","available":true,"id":573886,"_id":"ZrAelUosAfGTZLpS"}
 {"doctor_id":1,"time":"14:00","day":"2024-05-19","available":true,"id":86749,"_id":"ZygactKsu4fKjwaL"}
 {"doctor_id":4,"time":"15:00","day":"2024-05-19","available":true,"id":126245,"_id":"a2HpSZk78YBF9VKE"}
+{"doctor_id":3,"day":"2024-05-24","time":"8:00","available":false,"_id":"aFD8raDS4YfpcxiP"}
 {"doctor_id":2,"time":"15:00","day":"2024-05-21","available":true,"id":6967,"_id":"aH03zv88yyVHiml1"}
 {"doctor_id":3,"time":"10:00","day":"2024-05-19","available":true,"id":359144,"_id":"aJLWhWaJsFroWTk6"}
 {"doctor_id":2,"time":"14:00","day":"2024-05-24","available":true,"id":499528,"_id":"aJoudr9wr50TDeIo"}
@@ -537,7 +538,7 @@
 {"doctor_id":3,"time":"12:00","day":"2024-05-19","available":true,"id":223670,"_id":"mlck1TIVEJtNfDuL"}
 {"doctor_id":4,"time":"9:00","day":"2024-05-19","available":true,"id":498625,"_id":"muIL7LSmdWIvVxf1"}
 {"doctor_id":3,"time":"9:00","day":"2024-05-20","available":true,"id":530151,"_id":"mx4oCcarxrVDy1aK"}
-{"doctor_id":3,"time":"8:00","day":"2024-05-24","available":true,"id":634666,"_id":"n3I73xzuyU4hwvH7"}
+{"doctor_id":3,"time":"8:00","day":"2024-05-24","available":false,"id":634666,"_id":"n3I73xzuyU4hwvH7"}
 {"doctor_id":2,"time":"11:00","day":"2024-05-23","available":true,"id":415461,"_id":"nGQ1EBawkmVWpOZ7"}
 {"doctor_id":1,"time":"11:00","day":"2024-05-20","available":true,"id":902985,"_id":"neGwGHss6WiMvfAQ"}
 {"doctor_id":4,"time":"17:00","day":"2024-05-24","available":true,"id":207649,"_id":"nfXMZBlaLoWrsORC"}

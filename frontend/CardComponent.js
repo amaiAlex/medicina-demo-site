@@ -187,33 +187,38 @@ function render() {
       .then((response) => response.json())
       .then((appointments) => {
         let cardHtml = `
-          <div class="col mb-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">${chosenDoctor.doctor_name}</h5>
-                ${appointments
-                  .map((appointment) => appointment.time)
-                  .filter((time, index, times) => times.indexOf(time) === index)
-                  .map((time) => {
-                    // Проверяем доступность времени
-                    const isAvailable = appointments.some(
-                      (appointment) =>
-                        appointment.time === time &&
-                        appointment.day === chosenDayId &&
-                        appointment.doctor_id === chosenDoctor.doctor_id &&
-                        appointment.available
-                    );
-                    // Применяем соответствующий класс в зависимости от доступности времени
-                    const buttonClass = isAvailable
-                      ? "btn btn-primary"
-                      : "btn btn-secondary disabled";
-                    return ` <a href="registerPage.html" onclick="chooseTime('${time}'); sendAppointmentData();" class="${buttonClass} make-appointment mt-2 mb-2">${time}</a>`;
-                  })
-                  .join("")}
-                  <button class="btn btn-warning" onclick="goBack()">Назад</button>
-              </div>
+            <div class="col mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${chosenDoctor.doctor_name}</h5>
+                        ${appointments
+                          .map((appointment) => appointment.time)
+                          .filter(
+                            (time, index, times) =>
+                              times.indexOf(time) === index
+                          )
+                          .sort() // Сортировка временных слотов по возрастанию
+                          .map((time) => {
+                            // Проверяем доступность времени
+                            const isAvailable = appointments.some(
+                              (appointment) =>
+                                appointment.time === time &&
+                                appointment.day === chosenDayId &&
+                                appointment.doctor_id ===
+                                  chosenDoctor.doctor_id &&
+                                appointment.available
+                            );
+                            // Применяем соответствующий класс в зависимости от доступности времени
+                            const buttonClass = isAvailable
+                              ? "btn btn-primary"
+                              : "btn btn-secondary disabled";
+                            return ` <a href="registerPage.html" onclick="chooseTime('${time}'); sendAppointmentData();" class="${buttonClass} make-appointment mt-2 mb-2">${time}</a>`;
+                          })
+                          .join("")}
+                        <button class="btn btn-warning" onclick="goBack()">Назад</button>
+                    </div>
+                </div>
             </div>
-          </div>
         `;
         console.log({ chosenDoctor, chosenDayId, chosenTimeId });
 
