@@ -6,9 +6,10 @@
 {"doctor_id":2,"day":"Суббота","time":"15:00","available":false,"_id":"1nYU36aoZrkIygjA"}
 {"id":74,"doctor_id":3,"time":"15:00","day":"Четверг","available":true,"_id":"1yehkJIe2oPMNouq"}
 {"id":62,"doctor_id":2,"time":"14:00","day":"Суббота","available":false,"_id":"2B0HXH2izCH4uL7i"}
-{"id":96,"doctor_id":3,"time":"15:00","day":"Суббота","available":true,"_id":"2hAQCMSTYBAVgg2O"}
+{"id":96,"doctor_id":3,"time":"15:00","day":"Суббота","available":false,"_id":"2hAQCMSTYBAVgg2O"}
 {"id":115,"doctor_id":4,"time":"12:00","day":"Вторник","available":true,"_id":"2mkrxCezq2CvmNGl"}
 {"id":19,"doctor_id":1,"time":"15:00","day":"Вторник","available":true,"_id":"2roURjHQWCXP0Mk3"}
+{"doctor_id":3,"day":"Среда","time":"12:00","available":false,"_id":"3BZl8PZSTu7Q8ANN"}
 {"id":20,"doctor_id":1,"time":"16:00","day":"Вторник","available":true,"_id":"48nIjjTHKqBjMflj"}
 {"id":85,"doctor_id":3,"time":"15:00","day":"Пятница","available":true,"_id":"4wMy9YIP9JG1sYwc"}
 {"id":93,"doctor_id":3,"time":"12:00","day":"Суббота","available":true,"_id":"5iUoTBBCaUG621vi"}
@@ -28,10 +29,11 @@
 {"id":116,"doctor_id":4,"time":"13:00","day":"Вторник","available":true,"_id":"CR3F1bzLVN6pwHCV"}
 {"id":33,"doctor_id":1,"time":"18:00","day":"Среда","available":true,"_id":"DytwsguDowBMmDTO"}
 {"id":108,"doctor_id":4,"time":"16:00","day":"Понедельник","available":true,"_id":"EMoTtIYHopBTaaZ1"}
-{"id":31,"doctor_id":1,"time":"16:00","day":"Среда","available":true,"_id":"EZqHDlQVxlWYjPTT"}
+{"id":31,"doctor_id":1,"time":"16:00","day":"Среда","available":false,"_id":"EZqHDlQVxlWYjPTT"}
 {"id":56,"doctor_id":2,"time":"8:00","day":"Суббота","available":false,"_id":"EbShvvdzVBDlrfX5"}
 {"id":119,"doctor_id":4,"time":"16:00","day":"Вторник","available":true,"_id":"EusG34ggjkSEPv8N"}
 {"id":124,"doctor_id":4,"time":"10:00","day":"Среда","available":true,"_id":"FBg6DCVaXtG9tKHC"}
+{"doctor_id":2,"day":"Четверг","time":"14:00","available":false,"_id":"FLnU9uhoyreunFyM"}
 {"id":118,"doctor_id":4,"time":"15:00","day":"Вторник","available":true,"_id":"GDOV8mDzSG1onn4S"}
 {"id":6,"doctor_id":1,"time":"13:00","day":"Понедельник","available":true,"_id":"GjHEtbJKDyzuKxgU"}
 {"id":109,"doctor_id":4,"time":"17:00","day":"Понедельник","available":true,"_id":"GkVDzhgGJamfqmZQ"}
@@ -40,7 +42,7 @@
 {"id":122,"doctor_id":4,"time":"8:00","day":"Среда","available":true,"_id":"I1NgWXfyzuoJXnZN"}
 {"id":59,"doctor_id":2,"time":"11:00","day":"Суббота","available":false,"_id":"IgMg1kTAWK9mk9ht"}
 {"id":73,"doctor_id":3,"time":"14:00","day":"Четверг","available":true,"_id":"IntOOSdTjEDFu0XA"}
-{"id":40,"doctor_id":2,"time":"14:00","day":"Четверг","available":true,"_id":"JEa7x5yq1apqtEQe"}
+{"id":40,"doctor_id":2,"time":"14:00","day":"Четверг","available":false,"_id":"JEa7x5yq1apqtEQe"}
 {"doctor_id":2,"day":"Суббота","time":"11:00","available":false,"_id":"JWbRobpCsqGBgwWp"}
 {"id":127,"doctor_id":4,"time":"13:00","day":"Среда","available":true,"_id":"Jpc61Pb0O8UhhGwC"}
 {"id":39,"doctor_id":2,"time":"13:00","day":"Четверг","available":true,"_id":"JwojOJrZ9tYetifm"}
@@ -54,6 +56,7 @@
 {"id":24,"doctor_id":1,"time":"9:00","day":"Среда","available":true,"_id":"PHAgQLVB1eFUjuzB"}
 {"id":50,"doctor_id":2,"time":"13:00","day":"Пятница","available":true,"_id":"PhwtgXijFNv9tdEb"}
 {"id":107,"doctor_id":4,"time":"15:00","day":"Понедельник","available":true,"_id":"Q1O6pJBm6nuMZKCT"}
+{"doctor_id":1,"day":"Среда","time":"14:00","available":false,"_id":"QGOukM3B3EpQu3i7"}
 {"id":9,"doctor_id":1,"time":"16:00","day":"Понедельник","available":true,"_id":"QXXUe3Tr58yxr2hv"}
 {"id":99,"doctor_id":3,"time":"18:00","day":"Суббота","available":true,"_id":"REHsc6EIdO79uMmd"}
 {"id":117,"doctor_id":4,"time":"14:00","day":"Вторник","available":true,"_id":"RIZffx90LpU2HrQG"}
@@ -67,6 +70,7 @@
 {"id":64,"doctor_id":2,"time":"16:00","day":"Суббота","available":true,"_id":"V84zsCj3NF9NUS2X"}
 {"doctor_id":2,"day":"Суббота","time":"8:00","available":false,"_id":"VybhIfp0JpDfwRpn"}
 {"id":36,"doctor_id":2,"time":"10:00","day":"Четверг","available":true,"_id":"WGh9megyBOyUvWqO"}
+{"doctor_id":3,"day":"Суббота","time":"14:00","available":false,"_id":"WK54Ab7wdCJCgsdK"}
 {"id":126,"doctor_id":4,"time":"12:00","day":"Среда","available":true,"_id":"WMR5ch3Klutaskz7"}
 {"id":104,"doctor_id":4,"time":"12:00","day":"Понедельник","available":true,"_id":"WoEN1iBa0tDS6r93"}
 {"id":43,"doctor_id":2,"time":"17:00","day":"Четверг","available":true,"_id":"X5chYndVRI19RkR6"}
@@ -80,6 +84,7 @@
 {"id":70,"doctor_id":3,"time":"11:00","day":"Четверг","available":true,"_id":"Zascs2JqcVuQTw4w"}
 {"id":63,"doctor_id":2,"time":"15:00","day":"Суббота","available":false,"_id":"a81azycnbaVbUyLt"}
 {"id":46,"doctor_id":2,"time":"9:00","day":"Пятница","available":true,"_id":"aU0cBlQMwWBdt13i"}
+{"doctor_id":1,"day":"Среда","time":"16:00","available":false,"_id":"acJFtzEpXNjBYKPB"}
 {"id":48,"doctor_id":2,"time":"11:00","day":"Пятница","available":true,"_id":"b2ywIUQkV1to56Bx"}
 {"id":81,"doctor_id":3,"time":"11:00","day":"Пятница","available":true,"_id":"bJo7sJxRkty9dFEm"}
 {"id":68,"doctor_id":3,"time":"9:00","day":"Четверг","available":true,"_id":"bR2vqBzskmpj8Y35"}
@@ -91,9 +96,9 @@
 {"id":17,"doctor_id":1,"time":"13:00","day":"Вторник","available":true,"_id":"d97u8so4sroIUbgX"}
 {"id":37,"doctor_id":2,"time":"11:00","day":"Четверг","available":true,"_id":"dIjfxiVA2rFjhpJK"}
 {"id":87,"doctor_id":3,"time":"17:00","day":"Пятница","available":true,"_id":"eA3PJP9GtmOcAytB"}
-{"id":29,"doctor_id":1,"time":"14:00","day":"Среда","available":true,"_id":"ekID8Ouc77Xc0s8F"}
+{"id":29,"doctor_id":1,"time":"14:00","day":"Среда","available":false,"_id":"ekID8Ouc77Xc0s8F"}
 {"id":25,"doctor_id":1,"time":"10:00","day":"Среда","available":true,"_id":"f5niMrJq4X5pqZhd"}
-{"id":95,"doctor_id":3,"time":"14:00","day":"Суббота","available":true,"_id":"hA0A0j5JZSwk3Tqv"}
+{"id":95,"doctor_id":3,"time":"14:00","day":"Суббота","available":false,"_id":"hA0A0j5JZSwk3Tqv"}
 {"id":55,"doctor_id":2,"time":"18:00","day":"Пятница","available":true,"_id":"hjb0aKei2svZZiE9"}
 {"id":8,"doctor_id":1,"time":"15:00","day":"Понедельник","available":true,"_id":"hpPJVquJYjfWAwpl"}
 {"id":71,"doctor_id":3,"time":"12:00","day":"Четверг","available":true,"_id":"iv0kBCTZgjFQzPmk"}
@@ -135,6 +140,7 @@
 {"id":90,"doctor_id":3,"time":"9:00","day":"Суббота","available":true,"_id":"wx07NSWRqirSyV1W"}
 {"id":86,"doctor_id":3,"time":"16:00","day":"Пятница","available":true,"_id":"x4ABKhyzra96K2Vr"}
 {"id":76,"doctor_id":3,"time":"17:00","day":"Четверг","available":true,"_id":"xG3FuSV0xI3BI9MU"}
+{"doctor_id":3,"day":"Суббота","time":"15:00","available":false,"_id":"yE92aTDxVddKYZZB"}
 {"id":28,"doctor_id":1,"time":"13:00","day":"Среда","available":true,"_id":"yNCwUIbIhhNY0MR6"}
 {"id":105,"doctor_id":4,"time":"13:00","day":"Понедельник","available":true,"_id":"z8BXd7dUBsEW831z"}
 {"id":98,"doctor_id":3,"time":"17:00","day":"Суббота","available":true,"_id":"zeqDQGdc5YjJsdmA"}

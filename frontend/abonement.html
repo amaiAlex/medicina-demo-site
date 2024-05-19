@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Фитнес Абонементы</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: url("https://source.unsplash.com/1600x900/?fitness,gym")
+          no-repeat center center;
+        background-size: cover;
+      }
+      .card {
+        transition: transform 0.3s;
+      }
+      .card:hover {
+        transform: scale(1.05);
+      }
+      .navbar {
+        margin-bottom: 20px;
+      }
+      .header {
+        background: url("header-image.jpg") no-repeat center center;
+        background-size: cover;
+        color: white;
+        text-align: center;
+        padding: 100px 0;
+      }
+      .header h1 {
+        font-size: 3rem;
+      }
+      .footer {
+        background-color: #343a40;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        margin-top: auto; /* This pushes the footer to the bottom */
+      }
+      .footer a {
+        color: white;
+        text-decoration: none;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      #registration-container {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="fitnesfont.html">Фитнес Центр</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Абонементы <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Тренеры</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Контакты</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="header">
+      <h1>Добро пожаловать в наш Фитнес Центр</h1>
+      <p>Выберите свой абонемент и начните тренироваться уже сегодня!</p>
+    </div>
+
+    <div class="container my-5">
+      <div id="registration-container" class="row"></div>
+      <div class="row" id="abonements-container"></div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Фитнес Центр. Все права защищены.</p>
+        <p>
+          <a href="#">Политика конфиденциальности</a> |
+          <a href="#">Условия использования</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="abonementComponent.js"></script>
+  </body>
+</html>

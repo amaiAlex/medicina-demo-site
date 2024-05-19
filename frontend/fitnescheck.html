@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Абонементы</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Проверьте ваши посещения и присоединяйтесь к занятиям!</h3>
+          <form id="userInfoForm">
+            <div class="form-group">
+              <label for="firstName">Имя</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="Введите имя"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Фамилия</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                placeholder="Введите фамилию"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phoneNumber">Номер телефона</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="phoneNumber"
+                placeholder="Введите номер телефона"
+                required
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="submitUserInfo()"
+            >
+              Войти
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              onclick="checkAbonement()"
+            >
+              Проверить
+            </button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h3>Абонементы и Занятия</h3>
+          <div class="row">
+            <div class="col">
+              <p>Абонементы:</p>
+              <ul id="abonementResults"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function submitUserInfo() {
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const phoneNumber = document.getElementById("phoneNumber").value;
+
+        console.log("Имя:", firstName);
+        console.log("Фамилия:", lastName);
+        console.log("Номер телефона:", phoneNumber);
+
+        // Отправка запроса на уменьшение remainingUses при нажатии кнопки "Войти"
+        decreaseRemainingUses();
+      }
+
+      function decreaseRemainingUses() {
+        const phoneNumber = document.getElementById("phoneNumber").value;
+
+        const checkboxes = document.querySelectorAll(
+          "#abonementResults input[type='checkbox']:checked"
+        );
+
+        checkboxes.forEach((checkbox) => {
+          const abonementId = checkbox.value;
+
+          // Отправка запроса на уменьшение remainingUses для выбранного абонемента
+          fetch(`http://localhost:3000/decreaseRemainingUses`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              phone: phoneNumber,
+              abonementId: abonementId,
+            }),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Failed to decrease remainingUses");
+              }
+              console.log("Successfully decreased remainingUses");
+              // Обновление интерфейса после успешного уменьшения остатка
+              updateInterface();
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+      }
+
+      function updateInterface() {
+        const phoneNumber = document.getElementById("phoneNumber").value;
+
+        fetch(`http://localhost:3000/purchases?phone=${phoneNumber}`)
+          .then((response) => response.json())
+          .then((purchases) => {
+            if (purchases.length > 0) {
+              fetch(`http://localhost:3000/abonements`)
+                .then((response) => response.json())
+                .then((abonements) => {
+                  const abonementResults =
+                    document.getElementById("abonementResults");
+                  abonementResults.innerHTML = "";
+
+                  const filteredPurchases = purchases.filter(
+                    (purchase) => purchase.phone === phoneNumber
+                  );
+
+                  if (filteredPurchases.length > 0) {
+                    filteredPurchases.forEach((purchase) => {
+                      const abonement = abonements.find(
+                        (item) => item.id === purchase.abonementId
+                      );
+
+                      if (abonement) {
+                        const listItem = document.createElement("li");
+                        const checkbox = document.createElement("input");
+                        checkbox.type = "checkbox";
+                        checkbox.value = abonement.id;
+                        listItem.appendChild(checkbox);
+                        listItem.innerHTML += ` Абонемент: ${abonement.name}, Осталось: ${purchase.remainingUses}`;
+                        abonementResults.appendChild(listItem);
+                      } else {
+                        const listItem = document.createElement("li");
+                        listItem.innerText = `Абонемент не найден, Осталось: ${purchase.remainingUses}`;
+                        abonementResults.appendChild(listItem);
+                      }
+                    });
+                  } else {
+                    const listItem = document.createElement("li");
+                    listItem.innerText =
+                      "Нет данных о покупках для указанного номера телефона.";
+                    abonementResults.appendChild(listItem);
+                  }
+                })
+                .catch((error) =>
+                  console.error(
+                    "Ошибка при получении информации об абонементах:",
+                    error
+                  )
+                );
+            } else {
+              console.log(
+                "Нет данных о покупках для указанного номера телефона."
+              );
+              const abonementResults =
+                document.getElementById("abonementResults");
+              abonementResults.innerHTML = "<li>Нет данных</li>";
+            }
+          })
+          .catch((error) =>
+            console.error("Ошибка при проверке абонемента:", error)
+          );
+      }
+
+      function checkAbonement() {
+        const phoneNumber = document.getElementById("phoneNumber").value;
+
+        fetch(`http://localhost:3000/purchases?phone=${phoneNumber}`)
+          .then((response) => response.json())
+          .then((purchases) => {
+            if (purchases.length > 0) {
+              fetch(`http://localhost:3000/abonements`)
+                .then((response) => response.json())
+                .then((abonements) => {
+                  const abonementResults =
+                    document.getElementById("abonementResults");
+                  abonementResults.innerHTML = "";
+
+                  const filteredPurchases = purchases.filter(
+                    (purchase) => purchase.phone === phoneNumber
+                  );
+
+                  if (filteredPurchases.length > 0) {
+                    filteredPurchases.forEach((purchase) => {
+                      const abonement = abonements.find(
+                        (item) => item.id === purchase.abonementId
+                      );
+
+                      if (abonement) {
+                        const listItem = document.createElement("li");
+                        const checkbox = document.createElement("input");
+                        checkbox.type = "checkbox";
+                        checkbox.value = abonement.id;
+                        listItem.appendChild(checkbox);
+                        listItem.innerHTML += ` Абонемент: ${abonement.name}, Осталось: ${purchase.remainingUses}`;
+                        abonementResults.appendChild(listItem);
+                      } else {
+                        const listItem = document.createElement("li");
+                        listItem.innerText = `Абонемент не найден, Осталось: ${purchase.remainingUses}`;
+                        abonementResults.appendChild(listItem);
+                      }
+                    });
+                  } else {
+                    const listItem = document.createElement("li");
+                    listItem.innerText =
+                      "Нет данных о покупках для указанного номера телефона.";
+                    abonementResults.appendChild(listItem);
+                  }
+                })
+                .catch((error) =>
+                  console.error(
+                    "Ошибка при получении информации об абонементах:",
+                    error
+                  )
+                );
+            } else {
+              console.log(
+                "Нет данных о покупках для указанного номера телефона."
+              );
+              const abonementResults =
+                document.getElementById("abonementResults");
+              abonementResults.innerHTML = "<li>Нет данных</li>";
+            }
+          })
+          .catch((error) =>
+            console.error("Ошибка при проверке абонемента:", error)
+          );
+      }
+    </script>
+  </body>
+</html>

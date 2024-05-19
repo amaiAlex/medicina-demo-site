@@ -1,53 +1,52 @@
-
-      /* Additional CSS for card height consistency */
-      .card {
-        height: 100%;
-      }
-      /* Align button to the bottom */
-      .card-body {
-        display: flex;
-        flex-direction: column;
-      }
-      .card-text {
-        flex-grow: 1;
-      }
-      /* Style for phone numbers */
-      .phone-number {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      .phone-number-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 5px;
-        border: 1px solid #ccc;
-        padding: 5px;
-      }
-      .phone-number-item i {
-        margin-right: 5px;
-      }
-      /* Style for individual phone number fields */
-      .phone-number-item .phone-number-label {
-        font-weight: bold;
-      }
-      .phone-number-item .phone-number-value {
-        font-style: italic;
-        color: #555;
-      }
-      /* Footer styles */
-      .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #343a40;
-        color: #fff;
-        padding: 20px 0;
-      }
-      /* Style for appointment buttons */
-      .appointment-day {
-        margin-bottom: 10px; /* Add bottom margin */
-      }
+/* Additional CSS for card height consistency */
+.card {
+  height: 100%;
+}
+/* Align button to the bottom */
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+.card-text {
+  flex-grow: 1;
+}
+/* Style for phone numbers */
+.phone-number {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.phone-number-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+.phone-number-item i {
+  margin-right: 5px;
+}
+/* Style for individual phone number fields */
+.phone-number-item .phone-number-label {
+  font-weight: bold;
+}
+.phone-number-item .phone-number-value {
+  font-style: italic;
+  color: #555;
+}
+/* Footer styles */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: #fff;
+  padding: 20px 0;
+}
+/* Style for appointment buttons */
+.appointment-day {
+  margin-bottom: 10px; /* Add bottom margin */
+}
 
 /* Модальное окно */
 .modal {
@@ -95,7 +94,6 @@
   cursor: pointer;
 }
 
-
 body {
   background-color: #f8f9fa;
   margin-bottom: 70px; /* Adjust margin to accommodate footer */
@@ -142,6 +140,3 @@ body {
     padding: 20px;
   }
 }
-
-
-      
