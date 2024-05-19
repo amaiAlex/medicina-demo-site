@@ -2,7 +2,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const moment = require("moment");
+console.log(moment().format("YYYY-MM-DD"));
 // initialise database
 const Datastore = require("nedb");
 const db = new Datastore({ filename: "./datafile.db", autoload: true });
@@ -69,6 +70,22 @@ function updateAvailability(doctorId, day, time) {
   );
 }
 
+function getWeekDates(weeksFromNow = 0) {
+  const startOfWeek = moment().add(weeksFromNow, "weeks").startOf("isoWeek");
+  const endOfWeek = moment().add(weeksFromNow, "weeks").endOf("isoWeek");
+  let dates = [];
+  for (let m = moment(startOfWeek); m.isBefore(endOfWeek); m.add(1, "days")) {
+    dates.push(m.format("YYYY-MM-DD"));
+  }
+  return dates;
+}
+
+app.get("/available-dates", (req, res) => {
+  const currentWeekDates = getWeekDates();
+  const nextWeekDates = getWeekDates(1);
+  res.json([...currentWeekDates, ...nextWeekDates]);
+});
+
 // Route to fetch list of doctors
 app.get("/doctors", (req, res) => {
   doctorsCollection.find({}, (err, doctors) => {
@@ -118,19 +135,17 @@ function generateId() {
 }
 
 app.get("/appointments", (req, res) => {
-  const doctorId = req.query.doctor_id; // Получаем ID врача из параметров запроса
-  console.log({ doctorId });
+  const doctor_id = Number(req.query.doctor_id);
+  const day = req.query.day;
 
-  appointmentsCollection.find(
-    { doctor_id: Number(doctorId) },
-    (err, appointments) => {
-      if (err) {
-        res.status(500).send("Error fetching appointments data");
-      } else {
-        res.json(appointments);
-      }
+  // find all the appointments
+  appointmentsCollection.find({ day, doctor_id }, (err, appointments) => {
+    if (err) {
+      return res.status(500).send("Error fetching appointments data");
+    } else {
+      return res.json(appointments);
     }
-  );
+  });
 });
 
 function generateRandomNumber() {

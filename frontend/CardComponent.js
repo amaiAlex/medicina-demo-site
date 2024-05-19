@@ -9,7 +9,31 @@ function chooseDoctor(doctor) {
   console.log({ doctor });
   chosenDoctor = doctor;
   currentCard = "dayCard";
-  render();
+
+  fetch("http://localhost:3000/available-dates")
+    .then((response) => response.json())
+    .then((dates) => {
+      let cardHtml = `
+        <div class="col mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">${chosenDoctor.doctor_name}</h5>
+              ${dates
+                .map((date) => {
+                  return ` <a href="#" onclick="chooseDay('${date}')" class="btn btn-primary make-appointment mt-2 mb-2">${moment(
+                    date
+                  ).format("dddd, D MMMM")}</a>`;
+                })
+                .join("")}
+              <button class="btn btn-warning" onclick="goBack()">Назад</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById(`doctor-${chosenDoctor.doctor_id}`).innerHTML =
+        cardHtml;
+    })
+    .catch((error) => console.error("Error fetching available dates:", error));
 }
 
 function chooseDay(day) {
@@ -32,7 +56,7 @@ function chooseTime(time) {
   console.log("Chosen time:", chosenTimeId);
   // Perform any action needed with the chosen time
 }
-// сделай функцию для отправки данных на сервер
+
 function sendAppointmentData() {
   fetch("http://localhost:3000/appointments", {
     method: "POST",
@@ -73,6 +97,26 @@ function getDoctorImage(doctor_id) {
 }
 
 function render() {
+  const currentDate = new Date();
+  const currentDayOfWeek = currentDate.getDay(); // 0 - Воскресенье, 1 - Понедельник, ..., 6 - Суббота
+  const daysInWeek = [
+    "Воскресенье",
+    "Понедельник",
+    "Вторник",
+    "Среда",
+    "Четверг",
+    "Пятница",
+    "Суббота",
+  ];
+
+  // Определяем начало текущей и следующей недели
+  const startOfCurrentWeek = new Date(currentDate);
+  startOfCurrentWeek.setDate(currentDate.getDate() - currentDayOfWeek);
+  const startOfNextWeek = new Date(startOfCurrentWeek);
+  startOfNextWeek.setDate(startOfNextWeek.getDate() + 7);
+
+  // Фильтруем данные о приемах для выбранных докторов и недели
+
   if (currentCard === "infoCard") {
     doctorsContainer.innerHTML = "";
   }
@@ -119,7 +163,9 @@ function render() {
                   .map((appointment) => appointment.day)
                   .filter((day, index, days) => days.indexOf(day) === index)
                   .map((day) => {
-                    return ` <a href="#" onclick="chooseDay('${day}')" class="btn btn-primary make-appointment mt-2 mb-2">${day}</a>`;
+                    return ` <a href="#" onclick="chooseDay('${day}')" class="btn btn-primary make-appointment mt-2 mb-2">${moment(
+                      day
+                    ).format("dddd, D MMMM")}</a>`;
                   })
                   .join("")}
                   <button class="btn btn-warning" onclick="goBack()">Назад</button>

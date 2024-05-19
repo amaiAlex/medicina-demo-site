@@ -70,154 +70,70 @@ const abonementSchema = {
 };
 
 const doctorsTable = [
-  { doctor_name: "Логинов Семен", occupation: "стоматолог", doctor_id: 1 },
-  { doctor_name: "Трофимов Иосиф", occupation: "офтальмолог", doctor_id: 2 },
-  { doctor_name: "Федосеев Юрий", occupation: "стоматолог", doctor_id: 3 },
+  {
+    doctor_name: "Логинов Семен",
+    occupation: "стоматолог",
+    doctor_id: 1,
+    days: ["Понедельник", "Вторник", "Среда"],
+  },
+  {
+    doctor_name: "Трофимов Иосиф",
+    occupation: "офтальмолог",
+    doctor_id: 2,
+
+    days: ["Четверг", "Пятница", "Суббота"],
+  },
+  {
+    doctor_name: "Федосеев Юрий",
+    occupation: "стоматолог",
+    doctor_id: 3,
+    days: ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+  },
   {
     doctor_name: "Гончаренко Николай",
     occupation: "офтальмолог",
     doctor_id: 4,
+    days: ["Понедельник", "Вторник", "Суббота"],
   },
 ];
 
-const appointmentsTable = [
-  // Doctor 1 schedule
-  { id: 1, doctor_id: 1, time: "8:00", day: "Понедельник", available: true },
-  { id: 2, doctor_id: 1, time: "9:00", day: "Понедельник", available: true },
-  { id: 3, doctor_id: 1, time: "10:00", day: "Понедельник", available: true },
-  { id: 4, doctor_id: 1, time: "11:00", day: "Понедельник", available: true },
-  { id: 5, doctor_id: 1, time: "12:00", day: "Понедельник", available: true },
-  { id: 6, doctor_id: 1, time: "13:00", day: "Понедельник", available: true },
-  { id: 7, doctor_id: 1, time: "14:00", day: "Понедельник", available: true },
-  { id: 8, doctor_id: 1, time: "15:00", day: "Понедельник", available: true },
-  { id: 9, doctor_id: 1, time: "16:00", day: "Понедельник", available: true },
-  { id: 10, doctor_id: 1, time: "17:00", day: "Понедельник", available: true },
-  { id: 11, doctor_id: 1, time: "18:00", day: "Понедельник", available: true },
-  { id: 12, doctor_id: 1, time: "8:00", day: "Вторник", available: true },
-  { id: 13, doctor_id: 1, time: "9:00", day: "Вторник", available: true },
-  { id: 14, doctor_id: 1, time: "10:00", day: "Вторник", available: true },
-  { id: 15, doctor_id: 1, time: "11:00", day: "Вторник", available: true },
-  { id: 16, doctor_id: 1, time: "12:00", day: "Вторник", available: true },
-  { id: 17, doctor_id: 1, time: "13:00", day: "Вторник", available: true },
-  { id: 18, doctor_id: 1, time: "14:00", day: "Вторник", available: true },
-  { id: 19, doctor_id: 1, time: "15:00", day: "Вторник", available: true },
-  { id: 20, doctor_id: 1, time: "16:00", day: "Вторник", available: true },
-  { id: 21, doctor_id: 1, time: "17:00", day: "Вторник", available: true },
-  { id: 22, doctor_id: 1, time: "18:00", day: "Вторник", available: true },
-  { id: 23, doctor_id: 1, time: "8:00", day: "Среда", available: true },
-  { id: 24, doctor_id: 1, time: "9:00", day: "Среда", available: true },
-  { id: 25, doctor_id: 1, time: "10:00", day: "Среда", available: true },
-  { id: 26, doctor_id: 1, time: "11:00", day: "Среда", available: true },
-  { id: 27, doctor_id: 1, time: "12:00", day: "Среда", available: true },
-  { id: 28, doctor_id: 1, time: "13:00", day: "Среда", available: true },
-  { id: 29, doctor_id: 1, time: "14:00", day: "Среда", available: true },
-  { id: 30, doctor_id: 1, time: "15:00", day: "Среда", available: true },
-  { id: 31, doctor_id: 1, time: "16:00", day: "Среда", available: true },
-  { id: 32, doctor_id: 1, time: "17:00", day: "Среда", available: true },
-  { id: 33, doctor_id: 1, time: "18:00", day: "Среда", available: true },
-  // Doctor 2 schedule
-  { id: 34, doctor_id: 2, time: "8:00", day: "Четверг", available: true },
-  { id: 35, doctor_id: 2, time: "9:00", day: "Четверг", available: true },
-  { id: 36, doctor_id: 2, time: "10:00", day: "Четверг", available: true },
-  { id: 37, doctor_id: 2, time: "11:00", day: "Четверг", available: true },
-  { id: 38, doctor_id: 2, time: "12:00", day: "Четверг", available: true },
-  { id: 39, doctor_id: 2, time: "13:00", day: "Четверг", available: true },
-  { id: 40, doctor_id: 2, time: "14:00", day: "Четверг", available: true },
-  { id: 41, doctor_id: 2, time: "15:00", day: "Четверг", available: true },
-  { id: 42, doctor_id: 2, time: "16:00", day: "Четверг", available: true },
-  { id: 43, doctor_id: 2, time: "17:00", day: "Четверг", available: true },
-  { id: 44, doctor_id: 2, time: "18:00", day: "Четверг", available: true },
-  { id: 45, doctor_id: 2, time: "8:00", day: "Пятница", available: true },
-  { id: 46, doctor_id: 2, time: "9:00", day: "Пятница", available: true },
-  { id: 47, doctor_id: 2, time: "10:00", day: "Пятница", available: true },
-  { id: 48, doctor_id: 2, time: "11:00", day: "Пятница", available: true },
-  { id: 49, doctor_id: 2, time: "12:00", day: "Пятница", available: true },
-  { id: 50, doctor_id: 2, time: "13:00", day: "Пятница", available: true },
-  { id: 51, doctor_id: 2, time: "14:00", day: "Пятница", available: true },
-  { id: 52, doctor_id: 2, time: "15:00", day: "Пятница", available: true },
-  { id: 53, doctor_id: 2, time: "16:00", day: "Пятница", available: true },
-  { id: 54, doctor_id: 2, time: "17:00", day: "Пятница", available: true },
-  { id: 55, doctor_id: 2, time: "18:00", day: "Пятница", available: true },
-  { id: 56, doctor_id: 2, time: "8:00", day: "Суббота", available: true },
-  { id: 57, doctor_id: 2, time: "9:00", day: "Суббота", available: true },
-  { id: 58, doctor_id: 2, time: "10:00", day: "Суббота", available: true },
-  { id: 59, doctor_id: 2, time: "11:00", day: "Суббота", available: true },
-  { id: 60, doctor_id: 2, time: "12:00", day: "Суббота", available: true },
-  { id: 61, doctor_id: 2, time: "13:00", day: "Суббота", available: true },
-  { id: 62, doctor_id: 2, time: "14:00", day: "Суббота", available: true },
-  { id: 63, doctor_id: 2, time: "15:00", day: "Суббота", available: true },
-  { id: 64, doctor_id: 2, time: "16:00", day: "Суббота", available: true },
-  { id: 65, doctor_id: 2, time: "17:00", day: "Суббота", available: true },
-  { id: 66, doctor_id: 2, time: "18:00", day: "Суббота", available: true },
-  // Doctor 3 schedule
-  { id: 67, doctor_id: 3, time: "8:00", day: "Четверг", available: true },
-  { id: 68, doctor_id: 3, time: "9:00", day: "Четверг", available: true },
-  { id: 69, doctor_id: 3, time: "10:00", day: "Четверг", available: true },
-  { id: 70, doctor_id: 3, time: "11:00", day: "Четверг", available: true },
-  { id: 71, doctor_id: 3, time: "12:00", day: "Четверг", available: true },
-  { id: 72, doctor_id: 3, time: "13:00", day: "Четверг", available: true },
-  { id: 73, doctor_id: 3, time: "14:00", day: "Четверг", available: true },
-  { id: 74, doctor_id: 3, time: "15:00", day: "Четверг", available: true },
-  { id: 75, doctor_id: 3, time: "16:00", day: "Четверг", available: true },
-  { id: 76, doctor_id: 3, time: "17:00", day: "Четверг", available: true },
-  { id: 77, doctor_id: 3, time: "18:00", day: "Четверг", available: true },
-  { id: 78, doctor_id: 3, time: "8:00", day: "Пятница", available: true },
-  { id: 79, doctor_id: 3, time: "9:00", day: "Пятница", available: true },
-  { id: 80, doctor_id: 3, time: "10:00", day: "Пятница", available: true },
-  { id: 81, doctor_id: 3, time: "11:00", day: "Пятница", available: true },
-  { id: 82, doctor_id: 3, time: "12:00", day: "Пятница", available: true },
-  { id: 83, doctor_id: 3, time: "13:00", day: "Пятница", available: true },
-  { id: 84, doctor_id: 3, time: "14:00", day: "Пятница", available: true },
-  { id: 85, doctor_id: 3, time: "15:00", day: "Пятница", available: true },
-  { id: 86, doctor_id: 3, time: "16:00", day: "Пятница", available: true },
-  { id: 87, doctor_id: 3, time: "17:00", day: "Пятница", available: true },
-  { id: 88, doctor_id: 3, time: "18:00", day: "Пятница", available: true },
-  { id: 89, doctor_id: 3, time: "8:00", day: "Суббота", available: true },
-  { id: 90, doctor_id: 3, time: "9:00", day: "Суббота", available: true },
-  { id: 91, doctor_id: 3, time: "10:00", day: "Суббота", available: true },
-  { id: 92, doctor_id: 3, time: "11:00", day: "Суббота", available: true },
-  { id: 93, doctor_id: 3, time: "12:00", day: "Суббота", available: true },
-  { id: 94, doctor_id: 3, time: "13:00", day: "Суббота", available: true },
-  { id: 95, doctor_id: 3, time: "14:00", day: "Суббота", available: true },
-  { id: 96, doctor_id: 3, time: "15:00", day: "Суббота", available: true },
-  { id: 97, doctor_id: 3, time: "16:00", day: "Суббота", available: true },
-  { id: 98, doctor_id: 3, time: "17:00", day: "Суббота", available: true },
-  { id: 99, doctor_id: 3, time: "18:00", day: "Суббота", available: true },
-  // Doctor 4 schedule
-  { id: 100, doctor_id: 4, time: "8:00", day: "Понедельник", available: true },
-  { id: 101, doctor_id: 4, time: "9:00", day: "Понедельник", available: true },
-  { id: 102, doctor_id: 4, time: "10:00", day: "Понедельник", available: true },
-  { id: 103, doctor_id: 4, time: "11:00", day: "Понедельник", available: true },
-  { id: 104, doctor_id: 4, time: "12:00", day: "Понедельник", available: true },
-  { id: 105, doctor_id: 4, time: "13:00", day: "Понедельник", available: true },
-  { id: 106, doctor_id: 4, time: "14:00", day: "Понедельник", available: true },
-  { id: 107, doctor_id: 4, time: "15:00", day: "Понедельник", available: true },
-  { id: 108, doctor_id: 4, time: "16:00", day: "Понедельник", available: true },
-  { id: 109, doctor_id: 4, time: "17:00", day: "Понедельник", available: true },
-  { id: 110, doctor_id: 4, time: "18:00", day: "Понедельник", available: true },
-  { id: 111, doctor_id: 4, time: "8:00", day: "Вторник", available: true },
-  { id: 112, doctor_id: 4, time: "9:00", day: "Вторник", available: true },
-  { id: 113, doctor_id: 4, time: "10:00", day: "Вторник", available: true },
-  { id: 114, doctor_id: 4, time: "11:00", day: "Вторник", available: true },
-  { id: 115, doctor_id: 4, time: "12:00", day: "Вторник", available: true },
-  { id: 116, doctor_id: 4, time: "13:00", day: "Вторник", available: true },
-  { id: 117, doctor_id: 4, time: "14:00", day: "Вторник", available: true },
-  { id: 118, doctor_id: 4, time: "15:00", day: "Вторник", available: true },
-  { id: 119, doctor_id: 4, time: "16:00", day: "Вторник", available: true },
-  { id: 120, doctor_id: 4, time: "17:00", day: "Вторник", available: true },
-  { id: 121, doctor_id: 4, time: "18:00", day: "Вторник", available: true },
-  { id: 122, doctor_id: 4, time: "8:00", day: "Среда", available: true },
-  { id: 123, doctor_id: 4, time: "9:00", day: "Среда", available: true },
-  { id: 124, doctor_id: 4, time: "10:00", day: "Среда", available: true },
-  { id: 125, doctor_id: 4, time: "11:00", day: "Среда", available: true },
-  { id: 126, doctor_id: 4, time: "12:00", day: "Среда", available: true },
-  { id: 127, doctor_id: 4, time: "13:00", day: "Среда", available: true },
-  { id: 128, doctor_id: 4, time: "14:00", day: "Среда", available: true },
-  { id: 129, doctor_id: 4, time: "15:00", day: "Среда", available: true },
-  { id: 130, doctor_id: 4, time: "16:00", day: "Среда", available: true },
-  { id: 131, doctor_id: 4, time: "17:00", day: "Среда", available: true },
-  { id: 132, doctor_id: 4, time: "18:00", day: "Среда", available: true },
-];
+const genererateAppointmentsTable = (doctors) => {
+  // assuming the doctors is an array of objects containing doctor_id and doctor_name and days, which is an array of strings identifying the days of the week on which this doctor works
+  // need to generate appointments for each doctor for each day of the week starting from 8:00 to 18:00 with 1 hour intervals
+  // the appointments should be available by default and start from today and go for the next 21 days
+
+  const appointments = [];
+  const days = doctors.reduce((acc, doctor) => acc.concat(doctor.days), []);
+  const today = new Date();
+  const next21Days = new Date(today);
+  next21Days.setDate(today.getDate() + 21);
+
+  for (let doctor of doctors) {
+    for (let day of days) {
+      // find the date of this day in this week  in the format yyyy-mm-dd
+      const dayIndex = days.indexOf(day);
+      const dayDate = new Date(today);
+      dayDate.setDate(today.getDate() + dayIndex);
+      const dayString = dayDate.toISOString().split("T")[0];
+
+      for (let i = 8; i <= 18; i++) {
+        const time = `${i}:00`;
+        const appointment = {
+          doctor_id: doctor.doctor_id,
+          time: time,
+          day: dayString,
+          available: true,
+          id: Math.floor(Math.random() * 1000000),
+        };
+        appointments.push(appointment);
+      }
+    }
+  }
+
+  return appointments;
+};
+
+const appointmentsTable = genererateAppointmentsTable(doctorsTable);
 
 const patientsTable = [
   {
