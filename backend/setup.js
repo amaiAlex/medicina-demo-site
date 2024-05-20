@@ -87,7 +87,7 @@ const doctorsTable = [
     doctor_name: "Федосеев Юрий",
     occupation: "стоматолог",
     doctor_id: 3,
-    days: ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+    days: ["Четверг", "Пятница", "Суббота"],
   },
   {
     doctor_name: "Гончаренко Николай",
@@ -97,43 +97,58 @@ const doctorsTable = [
   },
 ];
 
-const genererateAppointmentsTable = (doctors, countDays = 21) => {
-  // assuming the doctors is an array of objects containing doctor_id and doctor_name and days, which is an array of strings identifying the days of the week on which this doctor works
-  // need to generate appointments for each doctor for each day of the week starting from 8:00 to 18:00 with 1 hour intervals
-  // the appointments should be available by default and start from today and go for the next 21 days
-
+const genererateAppointmentsTable = (doctors, countDays = 14) => {
   const appointments = [];
-  let days = doctors.reduce((acc, doctor) => acc.concat(doctor.days), []);
-  // ensure that the days are unique
-  days = [...new Set(days)];
   const today = new Date();
-  const nextDays = new Date(today);
-  nextDays.setDate(today.getDate() + countDays);
+
+  const dayMap = {
+    Воскресенье: 0,
+    Понедельник: 1,
+    Вторник: 2,
+    Среда: 3,
+    Четверг: 4,
+    Пятница: 5,
+    Суббота: 6,
+  };
+
+  const getNextDate = (startDate, dayOfWeek) => {
+    const resultDate = new Date(startDate);
+    resultDate.setDate(
+      resultDate.getDate() + ((dayOfWeek - startDate.getDay() + 7) % 7)
+    );
+    return resultDate;
+  };
 
   for (let doctor of doctors) {
-    for (let day of days) {
-      // find the date of this day in this week  in the format yyyy-mm-dd
-      const dayIndex = days.indexOf(day);
-      const dayDate = new Date(today);
-      dayDate.setDate(today.getDate() + dayIndex);
-      const dayString = dayDate.toISOString().split("T")[0];
+    for (let day of doctor.days) {
+      const dayIndex = dayMap[day];
 
-      for (let i = 8; i <= 18; i++) {
-        const time = `${i}:00`;
-        const appointment = {
-          doctor_id: doctor.doctor_id,
-          time: time,
-          day: dayString,
-          available: true,
-          id: Math.floor(Math.random() * 1000000),
-        };
-        appointments.push(appointment);
+      for (let i = 0; i < countDays; i += 7) {
+        const appointmentDate = new Date(today);
+        appointmentDate.setDate(appointmentDate.getDate() + i);
+
+        const targetDate = getNextDate(appointmentDate, dayIndex);
+        const dayString = targetDate.toISOString().split("T")[0];
+
+        for (let hour = 8; hour <= 18; hour++) {
+          const time = `${hour}:00`;
+          const appointment = {
+            doctor_id: doctor.doctor_id,
+            time: time,
+            day: dayString,
+            available: true,
+            id: Math.floor(Math.random() * 1000000),
+          };
+          appointments.push(appointment);
+        }
       }
     }
   }
 
   return appointments;
 };
+
+console.log(genererateAppointmentsTable(doctorsTable));
 
 const appointmentsTable = genererateAppointmentsTable(doctorsTable);
 

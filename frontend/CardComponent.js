@@ -10,18 +10,39 @@ function chooseDoctor(doctor) {
   chosenDoctor = doctor;
   currentCard = "dayCard";
 
-  fetch("http://localhost:3000/available-dates")
+  function chooseDay(day) {
+    chosenDayId = day;
+    currentCard = "timeCard";
+    render();
+  }
+
+  function goBack() {
+    if (currentCard === "dayCard") {
+      currentCard = "infoCard";
+    } else if (currentCard === "timeCard") {
+      currentCard = "dayCard";
+    }
+    render();
+  }
+  fetch(`http://localhost:3000/appointments?doctor_id=${doctor.doctor_id}`)
     .then((response) => response.json())
-    .then((dates) => {
+    .then((appointments) => {
+      // Extract unique working days for the selected doctor and sort them
+      const workingDays = appointments
+        .map((appointment) => appointment.day)
+        .filter((day, index, days) => days.indexOf(day) === index)
+        .sort((a, b) => Date.parse(a) - Date.parse(b)); // Sort the days
+      console.log("Working Days:", workingDays);
+
       let cardHtml = `
         <div class="col mb-4">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">${chosenDoctor.doctor_name}</h5>
-              ${dates
-                .map((date) => {
-                  return ` <a href="#" onclick="chooseDay('${date}')" class="btn btn-primary make-appointment mt-2 mb-2">${moment(
-                    date
+              ${workingDays
+                .map((day) => {
+                  return `<a href="#" onclick="chooseDay('${day}')" class="btn btn-primary make-appointment mt-2 mb-2">${moment(
+                    day
                   ).format("dddd, D MMMM")}</a>`;
                 })
                 .join("")}
@@ -33,7 +54,9 @@ function chooseDoctor(doctor) {
       document.getElementById(`doctor-${chosenDoctor.doctor_id}`).innerHTML =
         cardHtml;
     })
-    .catch((error) => console.error("Error fetching available dates:", error));
+    .catch((error) =>
+      console.error("Error fetching appointments data:", error)
+    );
 }
 
 function chooseDay(day) {
@@ -155,24 +178,22 @@ function render() {
       .then((response) => response.json())
       .then((appointments) => {
         let cardHtml = `
-          <div class="col mb-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">${chosenDoctor.doctor_name}</h5>
-                ${appointments
-                  .map((appointment) => appointment.day)
-                  .filter((day, index, days) => days.indexOf(day) === index)
-                  .map((day) => {
-                    return ` <a href="#" onclick="chooseDay('${day}')" class="btn btn-primary make-appointment mt-2 mb-2">${moment(
-                      day
-                    ).format("dddd, D MMMM")}</a>`;
-                  })
-                  .join("")}
+            <div class="col mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${chosenDoctor.doctor_name}</h5>
+                  ${uniqueSortedDays
+                    .map((day) => {
+                      return ` <a href="#" onclick="chooseDay('${day}')" class="btn btn-primary make-appointment mt-2 mb-2">${moment(
+                        day
+                      ).format("dddd, D MMMM")}</a>`;
+                    })
+                    .join("")}
                   <button class="btn btn-warning" onclick="goBack()">Назад</button>
+                </div>
               </div>
             </div>
-          </div>
-        `;
+          `;
         document.getElementById(`doctor-${chosenDoctor.doctor_id}`).innerHTML =
           cardHtml;
       })
@@ -180,7 +201,7 @@ function render() {
         console.error("Error fetching appointments data:", error)
       );
   } else if (currentCard === "timeCard") {
-    // Fetch appointments data for the selected doctor from the server
+    // Fetch appointments data for the selected doctor and day
     fetch(
       `http://localhost:3000/appointments?doctor_id=${chosenDoctor.doctor_id}&day=${chosenDayId}`
     )
@@ -188,40 +209,31 @@ function render() {
       .then((appointments) => {
         let cardHtml = `
             <div class="col mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${chosenDoctor.doctor_name}</h5>
-                        ${appointments
-                          .map((appointment) => appointment.time)
-                          .filter(
-                            (time, index, times) =>
-                              times.indexOf(time) === index
-                          )
-                          .sort() // Сортировка временных слотов по возрастанию
-                          .map((time) => {
-                            // Проверяем доступность времени
-                            const isAvailable = appointments.some(
-                              (appointment) =>
-                                appointment.time === time &&
-                                appointment.day === chosenDayId &&
-                                appointment.doctor_id ===
-                                  chosenDoctor.doctor_id &&
-                                appointment.available
-                            );
-                            // Применяем соответствующий класс в зависимости от доступности времени
-                            const buttonClass = isAvailable
-                              ? "btn btn-primary"
-                              : "btn btn-secondary disabled";
-                            return ` <a href="registerPage.html" onclick="chooseTime('${time}'); sendAppointmentData();" class="${buttonClass} make-appointment mt-2 mb-2">${time}</a>`;
-                          })
-                          .join("")}
-                        <button class="btn btn-warning" onclick="goBack()">Назад</button>
-                    </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${chosenDoctor.doctor_name}</h5>
+                  ${appointments
+                    .map((appointment) => appointment.time)
+                    .filter(
+                      (time, index, times) => times.indexOf(time) === index
+                    )
+                    .sort() // Сортировка временных слотов по возрастанию
+                    .map((time) => {
+                      const isAvailable = appointments.some(
+                        (appointment) =>
+                          appointment.time === time && appointment.available
+                      );
+                      const buttonClass = isAvailable
+                        ? "btn btn-primary"
+                        : "btn btn-secondary disabled";
+                      return `<a href="registerPage.html" onclick="chooseTime('${time}'); sendAppointmentData();" class="${buttonClass} make-appointment mt-2 mb-2">${time}</a>`;
+                    })
+                    .join("")}
+                  <button class="btn btn-warning" onclick="goBack()">Назад</button>
                 </div>
+              </div>
             </div>
-        `;
-        console.log({ chosenDoctor, chosenDayId, chosenTimeId });
-
+          `;
         document.getElementById(`doctor-${chosenDoctor.doctor_id}`).innerHTML =
           cardHtml;
       })

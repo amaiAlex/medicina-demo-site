@@ -136,10 +136,11 @@ function generateId() {
 
 app.get("/appointments", (req, res) => {
   const doctor_id = Number(req.query.doctor_id);
-  const day = req.query.day;
 
-  // find all the appointments
-  appointmentsCollection.find({ day, doctor_id }, (err, appointments) => {
+  // Если указан день, фильтруем по дню, иначе возвращаем все дни для данного доктора
+  const query = doctor_id ? { doctor_id } : {};
+
+  appointmentsCollection.find(query, (err, appointments) => {
     if (err) {
       return res.status(500).send("Error fetching appointments data");
     } else {
